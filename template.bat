@@ -13,7 +13,7 @@ sc delete Name
 
 REM to disable a registry/startup...
 
-REG add "HKLM\SYSTEM\CurrentControlSet\services\SharedAccess" /v Start /t REG_DWORD /d 4 /f
+REG add "HKLM\SYSTEM\CurrentControlSet\services\Name" /v Start /t REG_DWORD /d 4 /f
 
 
 echo if failed go to task manager and force shut off then run again
