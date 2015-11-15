@@ -1,3 +1,13 @@
+         /¯¯¯/¯¯\   /¯¯¯/¯¯\            /¯¯¯/¯¯\    /¯¯¯/¯¯\  '    /¯¯¯/¯¯¯¯/         /¯¯¯ /¯¯¯\         
+/¯¯¯/¯¯\¯¯\     \' \¯¯¯\     \'          \¯¯¯\     \' |¯¯¯|  |\_/      \¯¯¯\    \¯_'       |¯¯¯¯|    |\ /  '     
+\¯¯¯\     \|¯     /    \     \     \   /¯¯¯/¯¯¯     /°\¯¯¯\  ¯¯¯¯¯\   \     \      /¯/\   ' \¯¯¯ \    \¯¯/¯¯\'
+  \     \       |¯¯'       \     \     \ \¯¯¯\     \¯¯     ¯¯¯)¯¯¯)    /'    \     \    \/    \'   \      \    \/'    /  
+    \___\__/              \___\__/   \___\__/            |___'|__/°       \___\____/       \___'\____/
+
+
+
+
+
 If your going to run everything, run win-registry FIRST as it makes the registry back to default.
 
 You may also want to use system_file_checker to see whats wrong with your system.
