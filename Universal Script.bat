@@ -88,12 +88,14 @@ pause
 set /P ap=Do You Want To Change Account Password Setting [Y/N]?
 if /I "%ap%" EQU "Y" goto :password1i
 if /I "%ap%" EQU "N" goto :
+pause
 goto :password
 
 :password1i
 set /P ap1=Do You Want To Change Minimum Password Limit [Y/N]?
 if /I "%ap1%" EQU "Y" goto :password1
 if /I "%ap1%" EQU "N" goto :password2i
+pause
 goto :password1i
 
 :password1
@@ -106,6 +108,7 @@ goto :password2i
 set /P ap3=Do You Want To Change Maximum Password Limit [Y/N]?
 if /I "%ap3%" EQU "Y" goto :password2
 if /I "%ap3%" EQU "N" goto :password3i
+pause
 goto :password2i
 
 :password2
@@ -118,6 +121,7 @@ goto :password2
 set /P ap5=Do You Want To Configure Passwords  Being Reusable [Y/N]?
 if /I "%ap5%" EQU "Y" goto :password3
 if /I "%ap5%" EQU "N" goto :password4i
+pause
 goto :password3i
 
 
