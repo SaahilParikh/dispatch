@@ -1,5 +1,21 @@
 @echo off
 
+REM initial choice
+:initial
+set /P c=Do You Want To Begin [Y/N]?
+if /I "%c%" EQU "Y" goto :start
+if /I "%c%" EQU "N" goto :exit
+goto :initial
+
+REM stopped service
+:exit
+echo The Operation Was Successfully Stoppped!
+pause
+exit
+
+
+:start
+
 echo disabling telnet...
 net stop telnet
 sc config tlntsvr start= disabled
