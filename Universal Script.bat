@@ -52,9 +52,37 @@ goto :windefi
 
 REM windef ===========================================================================================================
 
+:windefi
+set /P ap=Do You Want To Change The Current Winows Defender Settings [Y/N]?
+if /I "%ap%" EQU "Y" goto :windef1i
+if /I "%ap%" EQU "N" goto :telneti
+goto :windefi
+
+
+@echo off
+cd C:\Program Files\Windows Defender
+MpCmdRun.exe -SignatureUpdate
+pause
+
+:windef1i
+set /P ap=Do You Want To Update Your Windows Defenders? [Y/N]?
+if /I "%ap%" EQU "Y" goto :windef1
+if /I "%ap%" EQU "N" goto :telneti
+goto :windef1
+
+:windef1
+cd C:\Program Files\Windows Defender
+MpCmdRun.exe -SignatureUpdate
+pause
+goto :windef2i
 
 
 
+
+
+
+
+REM telnet ===========================================================================================================
 :telneti
 set /P ap=Do You Want To Change Current Telnet Configuration [Y/N]?
 if /I "%ap%" EQU "Y" goto :telnet
