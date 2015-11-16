@@ -18,30 +18,45 @@ REM firewall ===================================================================
 
 :firewalli
 set /P firewall=Do You Want To Configure Firewall [Y/N]?
-if /I "%firewall%" EQU "Y" goto :firewall1
+if /I "%firewall%" EQU "Y" goto :firewall1i
 if /I "%firewall%" EQU "N" goto :windefi
 pause
 goto :firewalli
 
 
-:firewall1
+:firewall1i
 set /P firewall=Do You Want To Firewall=Enable On All User Profiles [Y/N]?
-if /I "%firewall%" EQU "Y" netsh advfirewall set publicprofile state on
-if /I "%firewall%" EQU "N" goto :firewall2 
+if /I "%firewall%" EQU "Y" goto :firewall1
+if /I "%firewall%" EQU "N" goto :firewall2i 
 pause
-goto :firewall2
+goto :firewall1i
 
-:firewall2
+:firewall1
+netsh advfirewall set publicprofile state on
+pause
+goto :firewall2i
+
+:firewall2i
 set /P firewall=Do You Want To Firewall=Enable On Domain Profile [Y/N]?
-if /I "%firewall%" EQU "Y" netsh advfirewall set domainprofile state on
-if /I "%firewall%" EQU "N" goto :firewall3
+if /I "%firewall%" EQU "Y" goto :firewall2
+if /I "%firewall%" EQU "N" goto :firewall3i
 pause
-goto :firewall3
+goto :firewall2i
 
 :firewall2
+netsh advfirewall set domainprofile state on
+pause
+goto :firewall3i
+
+:firewall3i
 set /P firewall=Do You Want To Firewall=Enable On Private Profiles [Y/N]?
-if /I "%firewall%" EQU "Y" netsh advfirewall set privateprofile state on
+if /I "%firewall%" EQU "Y" goto firewall3
 if /I "%firewall%" EQU "N" goto :firewallf
+pause
+goto :firewall3i
+
+:firewall3
+netsh advfirewall set privateprofile state on
 pause
 goto :firewallf
 
