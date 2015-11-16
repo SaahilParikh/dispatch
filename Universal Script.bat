@@ -2,9 +2,9 @@
 
 REM initial choice
 :initial
-set /P c=Do You Want To Begin [Y/N]?
-if /I "%c%" EQU "Y" goto :start
-if /I "%c%" EQU "N" goto :exit
+set /P initial=Do You Want To Begin [Y/N]?
+if /I "%initial%" EQU "Y" goto :start
+if /I "%initial%" EQU "N" goto :exit
 goto :initial
 
 REM stopped service
@@ -28,6 +28,13 @@ net start wuauserv
 sc config wuauserv start= auto
 
 pause
+
+REM initial choice
+:initial
+set /P initial=Do You Want To Begin [Y/N]?
+if /I "%initial%" EQU "Y" goto :start
+if /I "%initial%" EQU "N" goto :exit
+goto :initial
 
 echo Checking Account Password details...
 net accounts /minpwlen:8
