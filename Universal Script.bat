@@ -159,6 +159,35 @@ if /I "%ap6%" EQU "%ap6%" net accounts /uniquepw:"%ap6%"
 pause
 goto :password4i
 
+:password4i
+set /P ap7=Do You Want To Configure Minimum Password Age [Y/N]?
+if /I "%ap7%" EQU "Y" goto :password4
+if /I "%ap7%" EQU "N" goto :password5i
+pause
+goto :password4i
+
+:password4
+net accounts /minpwage:"%ap7%"
+pause
+goto :password5i
+
+:password5i
+set /P ap8=Do You Want To Configure Maximum e [Y/N]?
+if /I "%ap8%" EQU "Y" goto :password5
+if /I "%ap8%" EQU "N" goto :passwordc
+pause
+goto :password5i
+
+:password5
+net accounts /maxpwage:"%ap8"
+pause
+goto :passwordc
+
+:passwordc
+set /P ap8=You Finished Password Configuration! Do You Want To Continue [Y/N]?
+if /I "%ap8%" EQU "Y" goto :password1i
+if /I "%ap8%" EQU "N" goto :port_blocki
+
 REM port block ===========================================================================================================
 
 :port_blocki
