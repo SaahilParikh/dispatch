@@ -13,12 +13,64 @@ echo The Operation Was Successfully Stoppped!
 pause
 exit
 
-
+REM firewall ===========================================================================================================
 :start
 
+:firewalli
+set /P firewall=Do You Want To Configure Firewall [Y/N]?
+if /I "%firewall%" EQU "Y" goto :firewall1
+if /I "%firewall%" EQU "N" goto :windefi
+pause
+goto :firewalli
+
+
+:firewall1
+set /P firewall=Do You Want To Firewall=Enable On All User Profiles [Y/N]?
+if /I "%firewall%" EQU "Y" netsh advfirewall set publicprofile state on
+if /I "%firewall%" EQU "N" goto :firewall2 
+pause
+goto :firewall2
+
+:firewall2
+set /P firewall=Do You Want To Firewall=Enable On Domain Profile [Y/N]?
+if /I "%firewall%" EQU "Y" netsh advfirewall set domainprofile state on
+if /I "%firewall%" EQU "N" goto :firewall3
+pause
+goto :firewall3
+
+:firewall2
+set /P firewall=Do You Want To Firewall=Enable On Private Profiles [Y/N]?
+if /I "%firewall%" EQU "Y" netsh advfirewall set privateprofile state on
+if /I "%firewall%" EQU "N" goto :firewallf
+pause
+goto :firewallf
+
+:firewallf
+echo firewall configuration finished!
+pause
+goto :windefi
+
+REM windef ===========================================================================================================
+
+
+
+
+:telneti
+set /P ap=Do You Want To Change Current Telnet Configuration [Y/N]?
+if /I "%ap%" EQU "Y" goto :telnet
+if /I "%ap%" EQU "N" goto :
+goto :telneti
+:telnet
 echo disabling telnet...
 net stop telnet
 sc config tlntsvr start= disabled
+echo press any keys to continue...
+pause
+goto :
+
+
+
+
 
 pause 
 
