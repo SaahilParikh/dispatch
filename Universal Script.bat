@@ -73,17 +73,11 @@ if /I "%ap%" EQU "Y" goto :windef1i
 if /I "%ap%" EQU "N" goto :telneti
 goto :windefi
 
-
-@echo off
-cd C:\Program Files\Windows Defender
-MpCmdRun.exe -SignatureUpdate
-pause
-
 :windef1i
 set /P ap=Do You Want To Update Your Windows Defenders? [Y/N]?
 if /I "%ap%" EQU "Y" goto :windef1
-if /I "%ap%" EQU "N" goto :telneti
-goto :windef1
+if /I "%ap%" EQU "N" goto :windef2i
+goto :windef1i
 
 :windef1
 cd C:\Program Files\Windows Defender
