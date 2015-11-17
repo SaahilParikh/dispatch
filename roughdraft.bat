@@ -108,7 +108,7 @@ goto :windef3i
 echo 0=default, 1=quick scan, 2=full scan.
 set /P windefscan=Pick Scan Option [0][1][2]?
 cd C:\Program Files\Windows Defender
-MpCmdRun.exe -Scan -"%windefscan%"
+MpCmdRun.exe -Scan -%windefscan%
 pause
 goto :telneti
 
@@ -152,7 +152,7 @@ goto :password1i
 
 :password1
 set /P ap2=Type In Your Limit (numerical, reccomend 8).
-net accounts /minpwlen:"%ap2%"
+net accounts /minpwlen:%ap2%
 pause 
 goto :password2i
 
@@ -165,7 +165,7 @@ goto :password2i
 
 :password2
 set /P ap4=Type In Your Max (numerical).
-net accounts /maxplen:"%ap4%"
+net accounts /maxplen:%ap4%
 pause
 goto :password2
 
@@ -179,7 +179,7 @@ goto :password3i
 
 :password3
 set /P ap6=Type In Your Max Amount of Reusible Password (numerical, recommend 0).
-net accounts /uniquepw:"%ap6%"
+net accounts /uniquepw:%ap6%
 pause
 goto :password4i
 
@@ -192,7 +192,7 @@ goto :password4i
 
 :password4
 set /P ap8=Type in The Minimum Password Age.
-net accounts /minpwage:"%ap8%"
+net accounts /minpwage:%ap8%
 pause
 goto :password5i
 
@@ -205,7 +205,7 @@ goto :password5i
 
 :password5
 set /P ap10=Type in Maximum Password Age.
-net accounts /maxpwage:"%ap10"
+net accounts /maxpwage:%ap10
 pause
 goto :passwordc
 
@@ -333,8 +333,8 @@ pause
 goto :port_block2-2
 
 :port_block2-3
-netsh advfirewall firewall add rule name="%pbnick%" protocol="%pbproto%"
-dir="%pbd%" remoteport="%pbnum%" action="%pba%"
+netsh advfirewall firewall add rule name=%pbnick% protocol=%pbproto%
+dir=%pbd% remoteport=%pbnum% action=%pba%
 
 goto :portblock2-1
 
