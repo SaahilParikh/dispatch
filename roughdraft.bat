@@ -226,9 +226,10 @@ pause
 goto :port_blocki
 
 :port_blocki2
-set /P pb2=Do You Want To Auto Configure Port Blocking or Manually [A/M]?
+set /P pb2=Do You Want To Auto Configure Port Blocking or Manually [A/M] o [F]inished?
 if /I "%pb2%" EQU "A" goto :port_block1
 if /I "%pb2%" EQU "M" goto :port_block2
+if /I "%pb2%" EQU "F" goto :auditi
 pause
 goto :port_blocki2
 
@@ -315,6 +316,7 @@ dir=out remoteport=944 action=block
 netsh advfirewall firewall add rule name="IPV6FTP" protocol=UDP
 dir=out remoteport=973 action=block
 pause
+goto :port_blocki2
 
 
 :port_block2-1
@@ -336,41 +338,28 @@ goto :port_block2-2
 netsh advfirewall firewall add rule name=%pbnick% protocol=%pbproto%
 dir=%pbd% remoteport=%pbnum% action=%pba%
 
-goto :portblock2-1
+goto :port_blocki2
 
 
+REM Auditpol ===========================================================================================================
 
+:auditi
+set /P audit1=Do You Want To Configure Audit Policy to Success/Failure Enable (Vista)[Y/N]?
+if /I "%audit1%" EQU "Y" goto :audit1
+if /I "%audit1%" EQU "N" goto :
+pause
+goto :auditi
 
+:audit1
+Auditpol /set /category:"Account Logon" /Success:enable /failure:enable
+Auditpol /set /category:"Logon/Logoff" /Success:enable /failure:enable
+Auditpol /set /category:"Account Management" /Success:enable /failure:enable
+Auditpol /set /category:"DS Access" /Success:enable /failure:enable
+Auditpol /set /category:"Object Access" /Success:enable /failure:enable
+Auditpol /set /category:"policy change" /Success:enable /failure:enable
+Auditpol /set /category:"Privilege use" /Success:enable /failure:enable
+Auditpol /set /category:"System" /Success:enable /failure:enable
+echo Finished!
+pause
+goto :browser
 
-
-
-
-:Top
-@ECHO OFF
-ECHO.
-ECHO ---------------------------------------
-SET /P UserInput=Please Enter a Number: 
-ECHO.
-ECHO UserInput = %UserInput%
-ECHO.
-SET /A Evaluated=UserInput
-ECHO Math-Evaluated UserInput = %Evaluated%
-if %Evaluated% EQU %UserInput% (
-    ECHO Integer
-    IF %UserInput% GTR 0 ( ECHO Positive )
-    IF %UserInput% LSS 0 ( ECHO Negative )
-    IF %UserInput% EQU 0 ( ECHO Zero )
-    REM - Other Comparison operators for numbers
-    REM - LEQ - Less Than or Equal To
-    REM - GEQ - Greater Than or Equal To
-    REM - NEQ - Not Equal To
-) ELSE (
-    REM - Non-numbers and decimal numbers get kicked out here
-    ECHO Non-Integer
-)
-
-GOTO Top
-
-
-
-timeout /t -1 
