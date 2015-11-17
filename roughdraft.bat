@@ -144,7 +144,7 @@ pause
 goto :password
 
 :password1i
-set /P ap1=Do You Want To Change Minimum Password Limit [Y/N]?
+set /P ap1=Do You Want To Change Minimum Password Character Limit [Y/N]?
 if /I "%ap1%" EQU "Y" goto :password1
 if /I "%ap1%" EQU "N" goto :password2i
 pause
@@ -157,71 +157,58 @@ pause
 goto :password2i
 
 :password2i
-set /P ap3=Do You Want To Change Maximum Password Limit [Y/N]?
-if /I "%ap3%" EQU "Y" goto :password2
-if /I "%ap3%" EQU "N" goto :password3i
+set /P ap5=Do You Want To Configure Passwords  Being Reusable [Y/N]?
+if /I "%ap5%" EQU "Y" goto :password2
+if /I "%ap5%" EQU "N" goto :password3i
 pause
 goto :password2i
 
-:password2
-set /P ap4=Type In Your Max (numerical).
-net accounts /maxplen:%ap4%
-pause
-goto :password2
 
-:password3i
-set /P ap5=Do You Want To Configure Passwords  Being Reusable [Y/N]?
-if /I "%ap5%" EQU "Y" goto :password3
-if /I "%ap5%" EQU "N" goto :password4i
+:password2
+set /P ap6=Type In Your Max Amount of Reusible Password (numerical, recommend 0).
+net accounts /uniquepw:%ap6%
 pause
 goto :password3i
 
+:password3i
+set /P ap7=Do You Want To Configure Minimum Password Age [Y/N]?
+if /I "%ap7%" EQU "Y" goto :password3
+if /I "%ap7%" EQU "N" goto :password4i
+pause
+goto :password3i
 
 :password3
-set /P ap6=Type In Your Max Amount of Reusible Password (numerical, recommend 0).
-net accounts /uniquepw:%ap6%
+set /P ap8=Type in The Minimum Password Age.
+net accounts /minpwage:%ap8%
 pause
 goto :password4i
 
 :password4i
-set /P ap7=Do You Want To Configure Minimum Password Age [Y/N]?
-if /I "%ap7%" EQU "Y" goto :password4
-if /I "%ap7%" EQU "N" goto :password5i
+set /P ap9=Do You Want To Configure Maximum Age [Y/N]?
+if /I "%ap9%" EQU "Y" goto :password4
+if /I "%ap9%" EQU "N" goto :passwordf
 pause
 goto :password4i
 
 :password4
-set /P ap8=Type in The Minimum Password Age.
-net accounts /minpwage:%ap8%
-pause
-goto :password5i
-
-:password5i
-set /P ap9=Do You Want To Configure Maximum Age [Y/N]?
-if /I "%ap9%" EQU "Y" goto :password5
-if /I "%ap9%" EQU "N" goto :passwordc
-pause
-goto :password5i
-
-:password5
 set /P ap10=Type in Maximum Password Age.
 net accounts /maxpwage:%ap10
 pause
-goto :passwordc
+goto :passwordf
 
-:passwordc
+:passwordf
 set /P apf=You Finished Password Configuration! Do You Want To Continue [Y/N]?
 if /I "%apf%" EQU "Y" goto :port_blocki
 if /I "%apf%" EQU "N" goto :password1i
 pause
-
+goto :port_blocki
 
 REM port block ===========================================================================================================
 
 :port_blocki
 set /P pb1=Do You Want To Configure Port Blocking [Y/N]?
 if /I "%pb1%" EQU "Y" goto :port_blocki2
-if /I "%pb1%" EQU "N" goto :
+if /I "%pb1%" EQU "N" goto :auditi
 pause
 goto :port_blocki
 
@@ -363,3 +350,4 @@ echo Finished!
 pause
 goto :browser
 
+REM Browser ===========================================================================================================
