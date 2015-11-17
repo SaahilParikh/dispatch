@@ -295,13 +295,27 @@ pause
 
 
 :port_block2-1
-set /P pb1=Type In a Nickname.
-if /I "%pnick%" EQU "Y" goto :port_block2-2
-netsh advfirewall firewall add rule name="RemoteJob" protocol=TCP
-dir=out remoteport=5 action=block
-goto :portblock2
+set /P pbnick=Type In a Nickname.
+set /P pbnum=Type In the Port Number
+set /P pbproto=Type In the Protocal [TCP][UDP].
+set /P pba=Type In the action [block].
+set /P pbd=Type In the Direction [out].
+goto :portblock2-2
 
 :port_block2-2
+set /P pb3=Are You Sure About The Settings? [Y/N]?
+if /I "%pb3%" EQU "Y" goto :port_block2-1
+if /I "%pb3%" EQU "N" goto :port_block2-3
+pause
+goto :port_block2-2
+
+:port_block2-3
+netsh advfirewall firewall add rule name="%pbnick%" protocol="%pbproto%"
+dir="%pbd%" remoteport="%pbnum%" action="%pba%"
+
+goto :portblock2-1
+
+
 
 
 
