@@ -75,32 +75,42 @@ if /I "%windef%" EQU "N" goto :telneti
 goto :windefi
 
 :windef1i
-set /P windef1=Do You Want To Update Your Windows Defenders? [Y/N]?
+set /P windef1=Do You Want To Enable Windows defender? [Y/N]?
 if /I "%windef1%" EQU "Y" goto :windef1
 if /I "%windef1%" EQU "N" goto :windef2i
 goto :windef1i
 
 :windef1
 cd C:\Program Files\Windows Defender
-MpCmdRun.exe -SignatureUpdate
+MpCmdRun.exe -RestoreDefaults
 pause
 goto :windef2i
 
 :windef2i
-set /P windef2=Do You Want To Scan Your Computer [Y/N]?
+set /P windef2=Do You Want To Update Your Windows Defenders? [Y/N]?
 if /I "%windef2%" EQU "Y" goto :windef2
-if /I "%windef2%" EQU "N" goto :telneti
+if /I "%windef2%" EQU "N" goto :windef3i
 goto :windef2i
 
 :windef2
+cd C:\Program Files\Windows Defender
+MpCmdRun.exe -SignatureUpdate
+pause
+goto :windef3i
+
+:windef3i
+set /P windef2=Do You Want To Scan Your Computer [Y/N]?
+if /I "%windef3%" EQU "Y" goto :windef3
+if /I "%windef3%" EQU "N" goto :telneti
+goto :windef3i
+
+:windef3
 echo 0=default, 1=quick scan, 2=full scan.
 set /P windefscan=Pick Scan Option [0][1][2]?
 cd C:\Program Files\Windows Defender
-MpCmdRun.exe -Scan -2
+MpCmdRun.exe -Scan -"%windefscan%"
 pause
 goto :telneti
-
-
 
 
 
