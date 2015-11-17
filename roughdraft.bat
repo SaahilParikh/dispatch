@@ -1,4 +1,5 @@
 @echo off
+title Win-Sec
 
 REM initial choice
 :initial
@@ -128,7 +129,7 @@ goto :password1i
 
 :password1
 set /P ap2=Type In Your Limit (numerical, reccomend 8).
-if /I "%ap2%" EQU "%ap2%" net accounts /minpwlen:"%ap2%"
+net accounts /minpwlen:"%ap2%"
 pause 
 goto :password2i
 
@@ -141,7 +142,7 @@ goto :password2i
 
 :password2
 set /P ap4=Type In Your Max (numerical).
-if /I "%ap4%" EQU "%ap4%" net accounts /maxplen:"%ap4%"
+net accounts /maxplen:"%ap4%"
 pause
 goto :password2
 
@@ -155,7 +156,7 @@ goto :password3i
 
 :password3
 set /P ap6=Type In Your Max Amount of Reusible Password (numerical, recommend 0).
-if /I "%ap6%" EQU "%ap6%" net accounts /uniquepw:"%ap6%"
+net accounts /uniquepw:"%ap6%"
 pause
 goto :password4i
 
@@ -167,19 +168,21 @@ pause
 goto :password4i
 
 :password4
-net accounts /minpwage:"%ap7%"
+set /P ap8=Type in The Minimum Password Age.
+net accounts /minpwage:"%ap8%"
 pause
 goto :password5i
 
 :password5i
-set /P ap8=Do You Want To Configure Maximum e [Y/N]?
-if /I "%ap8%" EQU "Y" goto :password5
-if /I "%ap8%" EQU "N" goto :passwordc
+set /P ap9=Do You Want To Configure Maximum Age [Y/N]?
+if /I "%ap9%" EQU "Y" goto :password5
+if /I "%ap9%" EQU "N" goto :passwordc
 pause
 goto :password5i
 
 :password5
-net accounts /maxpwage:"%ap8"
+set /P ap10=Type in Maximum Password Age.
+net accounts /maxpwage:"%ap10"
 pause
 goto :passwordc
 
