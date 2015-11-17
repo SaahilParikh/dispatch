@@ -86,6 +86,19 @@ MpCmdRun.exe -SignatureUpdate
 pause
 goto :windef2i
 
+:windef2i
+set /P windef2=Do You Want To Scan Your Computer [Y/N]?
+if /I "%windef2%" EQU "Y" goto :windef2
+if /I "%windef2%" EQU "N" goto :telneti
+goto :windef2i
+
+:windef2
+echo 0=default, 1=quick scan, 2=full scan.
+set /P windefscan=Pick Scan Option [0][1][2]?
+cd C:\Program Files\Windows Defender
+MpCmdRun.exe -Scan -2
+pause
+goto :telneti
 
 
 
