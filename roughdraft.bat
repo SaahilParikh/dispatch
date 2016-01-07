@@ -99,7 +99,7 @@ pause
 goto :windef3i
 
 :windef3i
-set /P windef2=Do You Want To Scan Your Computer [Y/N]?
+set /P windef3=Do You Want To Scan Your Computer [Y/N]?
 if /I "%windef3%" EQU "Y" goto :windef3
 if /I "%windef3%" EQU "N" goto :telneti
 goto :windef3i
