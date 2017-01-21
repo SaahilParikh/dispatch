@@ -9,19 +9,6 @@
 
 ===================================================================
 
-If your going to run everything, run win-registry FIRST as it makes the registry back to default.
-
-You may also want to use system_file_checker to see whats wrong with your system.
-
-
-====GUIDE====
-+ Adds or Enables a program
-- Deletes, Disables< or Erases Registry of a Program
-# Misc. Things
-*none Still Figuring Out
-
-=============
-
 
 I need some testers as virtualization is not working and having trouble on my laptop!
 
