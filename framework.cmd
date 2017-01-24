@@ -20,6 +20,8 @@ mode con: cols=95 lines=78
 
 call :color 03 "Logged In As User "
 call :color 0B "%USERNAME% "
+call echo.
+call :color 04 "Type 'help' For Commands"
 echo.
 goto :menu
 
