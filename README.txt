@@ -19,3 +19,7 @@ Remember to run the program as administrator.
 I am not responsible for any mess up you do on a system. Almost all of these scripts aren't tested yet and are constantly being updated. Use at your risk!
 
 Good Luck
+
+DO OT USE ANYHTING IN THE FOLLOWING DIRECTORY
+/Old/
+/Scripts/
