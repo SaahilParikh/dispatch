@@ -8,6 +8,7 @@ echo Scan Complete!
 echo Check The result subdirectory
 echo.
 cd ..
-echo "Results Saved In %~dp0\result
+echo Results Saved In %~dp0\result
 echo.
+cd %~dp0
 call "framework.cmd"
