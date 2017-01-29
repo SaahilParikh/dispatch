@@ -10,4 +10,5 @@ echo Check The result subdirectory
 cd ..
 echo "Results Saved In C:\%~dp0\result"
 echo.
+cd %~dp0
 call "framework.cmd"
