@@ -62,14 +62,18 @@ echo.
 pause > NUL
 
 call :color 0C "                                           Checking If You Have Internet Connection "
+call echo.
 PING google.com | FIND "Reply from " > NUL
 IF NOT ERRORLEVEL 1 goto :yesi 
 IF ERRORLEVEL 1 goto :noi
 goto :error
 
 :yesi
+call echo.
 call :color 0a "                                           You Have Internet! "
+call echo.
 call :color 0C "                                        Press Any Key To Continue "
+call echo.
 pause > NUL
 cls
 call "framework.cmd"
