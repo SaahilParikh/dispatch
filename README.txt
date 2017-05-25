@@ -9,17 +9,15 @@
 
 ===================================================================
 
+Win-Sec is made by Erick, part of the Wando Cyber Patriot Team
 
-I need some testers as virtualization is not working and having trouble on my laptop!
+Testers are currently DrDavid101 and Goerick (me). Anymore testers are welcome!
 
-All the - scripts have a uninstall and a sc delete. If you get a error, it probably means you can't delete it because it is a system feature or it is not there.
+Remember to use a virtual machine when testing this. Bugs are still rampant and alot of refining is needed. 
+Make sure to restart the machine in order for the tweaks and changes to be in place.
 
-Remember to run the program as administrator.
+If you have a way to edit the MMC or gpedit via command line or powershell or anything automated let me know! 
 
-I am not responsible for any mess up you do on a system. Almost all of these scripts aren't tested yet and are constantly being updated. Use at your risk!
 
-Good Luck
-
-DO OT USE ANYHTING IN THE FOLLOWING DIRECTORY
-/Old/
-/Scripts/
+To Do ATM:
+Integrate the lgp folder into the framework and rename the folder as some of the edit is not in local group policy
