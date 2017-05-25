@@ -61,7 +61,7 @@ call :color 0a "                                 Press Anything Key To Continue 
 echo.
 pause > NUL
 
-call :color 0C "                                           Checking If You Have Internet Connection "
+call :color 0C "                             Checking If You Have Internet Connection "
 call echo.
 PING google.com | FIND "Reply from " > NUL
 IF NOT ERRORLEVEL 1 goto :yesi 
@@ -70,9 +70,9 @@ goto :error
 
 :yesi
 call echo.
-call :color 0a "                                           You Have Internet! "
+call :color 0a "                                     You Have Internet! "
 call echo.
-call :color 0C "                                        Press Any Key To Continue "
+call :color 0C "                                  Press Any Key To Continue "
 call echo.
 pause > NUL
 cls
@@ -80,9 +80,9 @@ call "framework.cmd"
 goto :error
 
 :noi 
-call :color 0C "                                           You Have No Internet "
-call :color 0C "                                    Please Check Why Your Internet Is Not Working "
-call :color 0C "                                         Press Any Key To Continue "
+call :color 0C "                                    You Have No Internet "
+call :color 0C "                        Please Check Why Your Internet Is Not Working "
+call :color 0C "                                  Press Any Key To Continue "
 pause > NUL
 cls
 call "framework.cmd"
@@ -91,8 +91,8 @@ goto :error
 
 
 :error
-call :color 0C "                                           Oops... A Critical Error Has Occured "
-call :color 0C "                                    Exiting Program, Please Contact The Developer, Sorry"
+call :color 0C "                              Oops... A Critical Error Has Occured "
+call :color 0C "                      Exiting Program, Please Contact The Developer, Sorry"
 pause > NUL
 exit /B
 
@@ -111,8 +111,8 @@ call :color 0C "                                           == WARNING == "
 echo.
 echo.
 echo.
-call :color 04 "                             You Are Not Running This Program At"
-call :color 0C " Admin Level! "
+call :color 04 "                                 You Are Not Running This Program At"
+call :color 0C "                                            Admin Level! "
 echo.
 echo.
 call :color 0E "                                            Quitting!"
