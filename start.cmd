@@ -63,8 +63,8 @@ pause > NUL
 
 call :color 0C "                             Checking If You Have Internet Connection "
 call echo.
-PING google.com | FIND "Reply from " > NUL
-IF NOT ERRORLEVEL 1 goto :yesi 
+ping google.com | FIND "Reply from " > NUL
+IF NOT ERRORLEVEL 1 goto :yesi
 IF ERRORLEVEL 1 goto :noi
 goto :error
 
@@ -77,15 +77,17 @@ call echo.
 pause > NUL
 cls
 call "framework.cmd"
+runas /user:administrator /savecred C:\%~dp0\framework.cmd
 goto :error
 
-:noi 
+:noi
 call :color 0C "                                    You Have No Internet "
 call :color 0C "                        Please Check Why Your Internet Is Not Working "
 call :color 0C "                                  Press Any Key To Continue "
 pause > NUL
 cls
 call "framework.cmd"
+runas /user:administrator /savecred  C:\%~dp0\framework.cmd
 goto :error
 
 
