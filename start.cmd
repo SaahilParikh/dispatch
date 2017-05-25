@@ -60,10 +60,43 @@ call echo.
 call :color 0a "                                 Press Anything Key To Continue                                       "
 echo.
 pause > NUL
+
+call :color 0C "                                           Checking If You Have Internet Connection "
+PING google.com | FIND "Reply from " > NUL
+IF NOT ERRORLEVEL 1 goto :yesi 
+IF ERRORLEVEL 1 goto :noi
+goto :error
+
+:yesi
+call :color 0a "                                           You Have Internet! "
+call :color 0C "                                        Press Any Key To Continue "
+pause > NUL
 cls
 call "framework.cmd"
-REM Incase of Errors
-goto :yes
+goto :error
+
+:noi 
+call :color 0C "                                           You Have No Internet "
+call :color 0C "                                    Please Check Why Your Internet Is Not Working "
+call :color 0C "                                         Press Any Key To Continue "
+pause > NUL
+cls
+call "framework.cmd"
+goto :error
+
+
+
+:error
+call :color 0C "                                           Oops... A Critical Error Has Occured "
+call :color 0C "                                    Exiting Program, Please Contact The Developer, Sorry"
+pause > NUL
+exit /B
+
+
+
+
+
+
 
 :no
 cd %~dp0
@@ -74,17 +107,16 @@ call :color 0C "                                           == WARNING == "
 echo.
 echo.
 echo.
-call :color 04 "                           You Are Not Running This Program At"
+call :color 04 "                             You Are Not Running This Program At"
 call :color 0C " Admin Level! "
 echo.
 echo.
-call :color 0E "                          Some Features May Not Work or Result In Damaging!"
+call :color 0E "                                            Quitting!"
 echo.
 call :color 0E "                                    Press Any Key To Continue"
 echo.
 pause > NUL
-cls
-call "framework.cmd"
+exit /B
 
 :color
 set "param=^%~2" !
