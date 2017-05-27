@@ -1,11 +1,9 @@
-setlocal enableextensions enabledelayedexpansion
+@setlocal enableextensions enabledelayedexpansion
 @echo off
 
-REM Basic Loading
-title Win-Sec
+
 
 REM ==============================
-
 REM Initialize Multicolor
 REM Multicolor Feature
 setlocal EnableDelayedExpansion
@@ -25,10 +23,13 @@ findstr /p /A:%1 "." "!param!\..\X" nul
 <nul set /p ".=%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%"
 exit /b
 
+
+
 :ini
 REM ==============================
 REM Set Window Size
 mode con: cols=95 lines=78
+title Win-Sec
 
 REM Show The Modules Scripts Loaded
 echo MODULES LOADED:
@@ -41,6 +42,9 @@ cd %~dp0\stigs
 dir /b /a-d
 echo.
 echo.
+echo API LOADED:
+cd %~dp0\api
+dir /b /a-d
 echo.
 
 REM Initial Messages:
@@ -64,12 +68,11 @@ REM Set Input
 set "INPUT="
 set /P INPUT=%USERNAME%@Win-Sec:~$
 
-REM Help
-if /I "%INPUT%" EQU "help" goto :help
 
-REM Going To Be Added Soon
-if /I "%INPUT%" EQU "clear" goto :menu
-if /I "%INPUT%" EQU "exit" goto :menu
+
+
+
+REM MENU Commands ==================================================
 
 REM Check For Invalid Commands
 echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
@@ -104,25 +107,30 @@ If %ERRORLEVEL% EQU 0 (
     cd stigs
     call %F%
 ) ELSE (
-  goto :nocommmand
+  goto :api
 )
 
+:api
+dir /s/b %F% >NUL
+If %ERRORLEVEL% EQU 0 (
+    cd %~dp0
+    cd api
+    call %F%
+) ELSE (
+  goto :nocommand
+)
+
+REM Incase The Above Fails
+REM Purely For Bug Testing
+:criticalerror
+echo.
+echo "Warning"
+echo "A critical error has occured"
+echo "Please report the findings on github"
+echo.
+
+
+REM Class For Unknown Commands
 :nocommmand
 echo "Unknown Command"
-goto :menu
-
-
-
-
-
-:help
-REM List Modules
-for /R %~dp0\modules %%f in (*.cmd) do (
-echo %%~nf
-)
-REM List Stigs
-for /R %~dp0\stigs %%f in (*.cmd) do (
-echo %%~nf
-)
-REM Go Back To Menu Terminal
 goto :menu
