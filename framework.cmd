@@ -75,6 +75,7 @@ set /P INPUT=%USERNAME%@Win-Sec:~$
 REM MENU Commands ==================================================
 
 REM Check For Invalid Commands
+setlocal enableDelayedExpansion
 echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
   goto :command
 ) || (
@@ -91,7 +92,7 @@ SET F=%%F
 
 REM See If It Exists
 cd
-dir /s/b %F% >NUL
+dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0
     cd modules
@@ -101,7 +102,7 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :stigs
-dir /s/b %F% >NUL
+dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0
     cd stigs
@@ -111,7 +112,7 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :api
-dir /s/b %F% >NUL
+dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0
     cd api
@@ -119,6 +120,12 @@ If %ERRORLEVEL% EQU 0 (
 ) ELSE (
   goto :nocommand
 )
+
+REM Incase if one of the plugins is missing goto :menu
+goto :menu
+
+
+
 
 REM Incase The Above Fails
 REM Purely For Bug Testing

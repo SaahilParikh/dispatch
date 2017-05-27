@@ -10,5 +10,5 @@ echo.
 MpCmdRun.exe -SignatureUpdate
 echo.
 echo.
-echo "Operation Executed. Make Sure To See For Errors"
+echo "Operation Executed"
 goto :menu
