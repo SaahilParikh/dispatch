@@ -88,7 +88,7 @@ SET F=%%F
 
 REM See If It Exists
 cd
-dir /s/b %F% >NUL 2>NUL
+dir /s/b %F% >NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0
     cd modules
@@ -98,7 +98,7 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :stigs
-dir /s/b %F% >NUL 2>NUL
+dir /s/b %F% >NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0
     cd stigs
