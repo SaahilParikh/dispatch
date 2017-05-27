@@ -5,5 +5,4 @@ REM Enabling Windows Installer to elevate privileges when installing application
 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer" /v AlwaysInstallElevated /t REG_DWORD /d 0 /f
 
-cd ..
-call "framework.cmd"
+goto :menu

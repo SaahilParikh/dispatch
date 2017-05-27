@@ -13,5 +13,4 @@ net start server
 echo.
 echo Operation Executed
 echo.
-cd ..
-call "framework.cmd"
+goto :menu

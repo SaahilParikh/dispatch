@@ -30,5 +30,4 @@ echo.
 echo.
 echo.
 echo Operation Executed
-cd ..
-call "framework.cmd"
+goto :menu

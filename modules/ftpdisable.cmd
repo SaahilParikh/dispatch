@@ -8,5 +8,4 @@ sc delete "MSFtpsvc"
 echo.
 echo Operation Executed
 cd ..
-echo.
-call "framework.cmd"
+goto :menu

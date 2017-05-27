@@ -5,5 +5,4 @@ reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\S
 REG ADD "HKEY_LOCAL_MACHINE\Software\Microsoft\CurrentVersion\Policies\System /f /v DisableCAD /t REG_WORD /d 1
 echo.
 echo Operation Executed
-cd ..
-call "framework.cmd"
+goto :menu

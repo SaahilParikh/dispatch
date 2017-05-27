@@ -26,5 +26,4 @@ REM Configuring this setting prevents autorun commands from executing.
 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\" /v NoAutorun /t REG_DWORD /d 1
 
-cd ..
-call "framework.cmd"
+goto :menu

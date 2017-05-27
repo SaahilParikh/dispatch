@@ -53,5 +53,4 @@ echo.
 echo "Operation Executed. Make Sure To See For Errors"
 echo "Click Any Keys To Continue"
 pause > NUL
-cd ..
-call "framework.cmd"
+goto :menu

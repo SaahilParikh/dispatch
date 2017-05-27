@@ -11,5 +11,4 @@ MpCmdRun.exe -SignatureUpdate
 echo.
 echo.
 echo "Operation Executed. Make Sure To See For Errors"
-cd ..
-call "framework.cmd"
+goto :menu
