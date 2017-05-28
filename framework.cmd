@@ -68,10 +68,6 @@ REM Set Input
 set "INPUT="
 set /P INPUT=%USERNAME%@Win-Sec:~$
 
-
-
-
-
 REM MENU Commands ==================================================
 
 REM Check For Invalid Commands
@@ -94,8 +90,7 @@ REM See If It Exists
 cd
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0
-    cd modules
+    cd %~dp0\modules
     call %F%
 ) ELSE (
   goto :stigs
@@ -104,8 +99,7 @@ If %ERRORLEVEL% EQU 0 (
 :stigs
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0
-    cd stigs
+    cd %~dp0\stigs
     call %F%
 ) ELSE (
   goto :api
@@ -114,7 +108,7 @@ If %ERRORLEVEL% EQU 0 (
 :api
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0
+    cd %~dp0\api
     cd api
     call %F%
 ) ELSE (
@@ -138,6 +132,6 @@ echo.
 
 
 REM Class For Unknown Commands
-:nocommmand
+:nocommand
 echo "Unknown Command"
 goto :menu
