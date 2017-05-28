@@ -33,17 +33,17 @@ title Win-Sec
 
 REM Show The Modules Scripts Loaded
 echo MODULES LOADED:
-cd %~dp0\modules
+cd %~dp0modules
 dir /b /a-d
 echo.
 REM Show Stigs Scripts Loaded
 echo STIGS LOADED:
-cd %~dp0\stigs
+cd %~dp0stigs
 dir /b /a-d
 echo.
 echo.
 echo API LOADED:
-cd %~dp0\api
+cd %~dp0api
 dir /b /a-d
 echo.
 
@@ -68,9 +68,11 @@ REM Set Input
 set "INPUT="
 set /P INPUT=%USERNAME%@Win-Sec:~$
 
+if /I "%INPUT%" EQU "help" goto :help
+
 REM MENU Commands ==================================================
 
-REM Check For Invalid Commands
+REM Check For Invalid Commands, currently this is bugged so going to add once it is fixed
 ::
 ::setlocal enableDelayedExpansion
 ::echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
@@ -92,6 +94,7 @@ dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\modules
     call %F%
+      cd :menu
 ) ELSE (
   goto :stigs
 )
@@ -102,6 +105,7 @@ dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\stigs
     call %F%
+      cd :menu
 ) ELSE (
   goto :api
 )
@@ -113,6 +117,7 @@ If %ERRORLEVEL% EQU 0 (
     cd %~dp0\api
     cd api
     call %F%
+      cd :menu
 ) ELSE (
   goto :nocommand
 )
@@ -136,4 +141,32 @@ echo.
 REM Class For Unknown Commands
 :nocommand
 echo "Unknown Command"
+goto :menu
+
+
+REM Help Command
+
+:help
+REM List Modules
+cd %~dp0
+for /R \modules %%f in (*.cmd) do (
+echo %%~nf
+)
+
+
+
+REM List Stigs
+cd %~dp0
+for /R \stigs %%f in (*.cmd) do (
+echo %%~nf
+)
+
+
+
+REM List API
+cd %~dp0
+for /R \api %%f in (*.cmd) do (
+echo %%~nf
+)
+
 goto :menu
