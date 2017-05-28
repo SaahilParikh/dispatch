@@ -71,13 +71,13 @@ set /P INPUT=%USERNAME%@Win-Sec:~$
 REM MENU Commands ==================================================
 
 REM Check For Invalid Commands
-setlocal enableDelayedExpansion
-echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
-  goto :command
-) || (
-  echo Unknown Command
-  goto :menu
-)
+::
+::setlocal enableDelayedExpansion
+::echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
+::  goto :command
+::) || (
+::  echo Unknown Command
+:: )
 
 :command
 REM For Executing Filename via call
@@ -87,7 +87,7 @@ SET F=%%F
 )
 
 REM See If It Exists
-cd
+cd %~dp0\modules
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\modules
@@ -97,6 +97,7 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :stigs
+cd %~dp0\stigs
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\stigs
@@ -106,6 +107,7 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :api
+cd %~dp0\api
 dir /s/b %F% 2>NUL
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\api
