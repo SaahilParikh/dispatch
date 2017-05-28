@@ -89,10 +89,10 @@ SET F=%%F
 )
 
 REM See If It Exists
-cd %~dp0\modules
-dir /s/b %F% 2>NUL
+cd %~dp0modules
+dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0\modules
+    cd %~dp0modules
     call %F%
       cd :menu
 ) ELSE (
@@ -100,10 +100,10 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :stigs
-cd %~dp0\stigs
-dir /s/b %F% 2>NUL
+cd %~dp0stigs
+dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0\stigs
+    cd %~dp0\tigs
     call %F%
       cd :menu
 ) ELSE (
@@ -111,10 +111,10 @@ If %ERRORLEVEL% EQU 0 (
 )
 
 :api
-cd %~dp0\api
-dir /s/b %F% 2>NUL
+cd %~dp0api
+dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0\api
+    cd %~dp0api
     cd api
     call %F%
       cd :menu
@@ -148,24 +148,24 @@ REM Help Command
 
 :help
 REM List Modules
-cd %~dp0
-for /R \modules %%f in (*.cmd) do (
+
+for /R %~dp0modules %%f in (*.cmd) do (
 echo %%~nf
 )
 
 
 
 REM List Stigs
-cd %~dp0
-for /R \stigs %%f in (*.cmd) do (
+
+for /R %~dp0stigs %%f in (*.cmd) do (
 echo %%~nf
 )
 
 
 
 REM List API
-cd %~dp0
-for /R \api %%f in (*.cmd) do (
+
+for /R %~dp0api %%f in (*.cmd) do (
 echo %%~nf
 )
 
