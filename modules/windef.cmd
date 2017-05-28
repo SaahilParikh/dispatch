@@ -11,4 +11,3 @@ MpCmdRun.exe -SignatureUpdate
 echo.
 echo.
 echo "Operation Executed"
-goto :menu

@@ -30,4 +30,3 @@ echo.
 echo.
 echo.
 echo Operation Executed
-goto :menu

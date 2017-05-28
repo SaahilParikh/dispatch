@@ -8,4 +8,3 @@ sc delete "MSFtpsvc"
 echo.
 echo Operation Executed
 cd ..
-goto :menu

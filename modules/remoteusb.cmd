@@ -4,4 +4,3 @@ reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WirelessUSBM
 echo.
 echo Operation Executed!
 echo.
-goto :menu

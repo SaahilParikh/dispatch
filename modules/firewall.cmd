@@ -9,4 +9,3 @@ REM Just incase if it doesn't work
 netsh advfirewall set allprofiles state on
 echo.
 echo Operation Executed
-goto :menu

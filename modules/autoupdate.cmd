@@ -19,4 +19,3 @@ echo.
 echo Operation Executed
 echo.
 echo.
-goto :menu

@@ -8,4 +8,3 @@ echo Finished!
 echo Starting Server...
 net start server
 echo Operation Executed
-goto :menu
