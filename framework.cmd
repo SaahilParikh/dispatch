@@ -103,7 +103,7 @@ If %ERRORLEVEL% EQU 0 (
 cd %~dp0stigs
 dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0\tigs
+    cd %~dp0\stigs
     call %F%
       cd :menu
 ) ELSE (
@@ -115,7 +115,6 @@ cd %~dp0api
 dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0api
-    cd api
     call %F%
       cd :menu
 ) ELSE (
