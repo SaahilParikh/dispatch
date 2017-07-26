@@ -159,17 +159,27 @@ goto :menu
 
 :: Help Command
 :help
+echo.
+echo.
+echo Modules
 :: List Modules
 for /R %~dp0modules %%f in (*.cmd) do (
 echo %%~nf
 )
+echo.
+echo Stigs
 :: List Stigs
 for /R %~dp0stigs %%f in (*.cmd) do (
 echo %%~nf
 )
+echo.
+echo API
 :: List API
 for /R %~dp0api %%f in (*.cmd) do (
 echo %%~nf
 )
+echo.
+echo.
+echo.
 :: Go Back
 goto :menu
