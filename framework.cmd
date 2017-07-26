@@ -1,78 +1,95 @@
 @setlocal enableextensions enabledelayedexpansion
 @echo off
 
-
-
-REM ==============================
-REM Initialize Multicolor
-REM Multicolor Feature
-setlocal EnableDelayedExpansion
-for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & call echo on & for %%b in (1) do rem"') do (
-  set "DEL=%%a"
-)
-<nul > X set /p ".=."
-
-goto :ini
-REM Did this so :color can be isolated
-
-REM color class
-:color
-set "param=^%~2" !
-set "param=!param:"=\"!"
-findstr /p /A:%1 "." "!param!\..\X" nul
-<nul set /p ".=%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%%DEL%"
-exit /b
-
-
-
 :ini
-REM ==============================
-REM Set Window Size
+:: ==============================
+:: ==============================
+:: Set Window Size
 mode con: cols=95 lines=78
+:: Set The Title
 title Win-Sec
+::
+echo.
+echo.
+echo Win-Sec
+echo.
+echo.
+echo.
+echo Automatic Windows Framework Hardening Script
+echo By Goerick
+echo Wando Cyber Patriot
+:check
+NET SESSION >nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+    goto :yes
+) ELSE (
+    goto :no
+)
 
-REM Show The Modules Scripts Loaded
+:yes
+cd %~dp0
+echo You Are Running This With Administrative Privilages
+goto :internet
+:no
+cd %~dp0
+echo You Are Not Running This With Administrative Privilages
+echo Errors And Critical Bugs May Occur
+goto :internet
+
+:internet
+echo Checking If You Have Internet Connection...
+ping google.com | FIND "Reply from " > NUL
+IF NOT ERRORLEVEL 1 goto :yesi
+IF ERRORLEVEL 1 goto :noi
+goto :error
+
+:yesi
+echo You Have Internet Connection
+goto :load
+:noi
+echo No Internet Connection
+goto :load
+
+
+
+:load
+:: Show The Modules Scripts Loaded
 echo MODULES LOADED:
 cd %~dp0modules
 dir /b /a-d
 echo.
-REM Show Stigs Scripts Loaded
+:: Show Stigs Scripts Loaded
 echo STIGS LOADED:
 cd %~dp0stigs
 dir /b /a-d
 echo.
 echo.
+:: Show API Scripts Loaded
 echo API LOADED:
 cd %~dp0api
 dir /b /a-d
 echo.
 
-REM Initial Messages:
-
-call :color 0c "Remember To Restart The Computer To Make Changes"
-echo.
-call :color 03 "Logged In As User "
-call :color 0B "%USERNAME% "
-call echo.
-call :color 04 "Type 'help' For Commands"
+:: Initial Messages:
+echo Logged In As User %USERNAME%
+echo Type 'help' For Commands
+echo Remember To Restart The Computer To Make Changes
 echo.
 goto :menu
 
 
-REM The Main Framework aka Menu Terminal
-:menu
-REM Set Directory
-cd %~dp0
-REM Set Input
+:menu :: The Main Framework aka Menu Terminal
 
+:: Set Directory
+cd %~dp0
+:: Set Input
 set "INPUT="
 set /P INPUT=%USERNAME%@Win-Sec:~$
-
 if /I "%INPUT%" EQU "help" goto :help
 
-REM MENU Commands ==================================================
+:: MENU Commands ==================================================
 
-REM Check For Invalid Commands, currently this is bugged so going to add once it is fixed
+:: Check For Invalid Commands, currently this is bugged so going to add once it is fixed
 ::
 ::setlocal enableDelayedExpansion
 ::echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
@@ -82,13 +99,13 @@ REM Check For Invalid Commands, currently this is bugged so going to add once it
 :: )
 
 :command
-REM For Executing Filename via call
-REM I could have just done with dir then variable, but this is an addon for later incase if I want to implement sub commands
+:: For Executing Filename via call
+:: I could have just done with dir then variable, but this is an addon for later incase if I want to implement sub commands
 FOR /F "tokens=* USEBACKQ" %%F IN (`@echo %INPUT%.cmd`) DO (
 SET F=%%F
 )
 
-REM See If It Exists
+:: See If It Exists
 cd %~dp0modules
 dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
@@ -121,51 +138,38 @@ If %ERRORLEVEL% EQU 0 (
   goto :nocommand
 )
 
-REM Incase if one of the plugins is missing goto :menu
+:: Incase if one of the plugins is missing goto :menu
 goto :menu
 
 
 
 
-REM Incase The Above Fails
-REM Purely For Bug Testing
+:: Incase The Above Fails
+:: Purely For Bug Testing
 :criticalerror
 echo.
-echo "Warning"
-echo "A critical error has occured"
-echo "Please report the findings on github"
+echo Warning
+echo A critical error has occured
 echo.
 
-
-REM Class For Unknown Commands
+:: Class For Unknown Commands
 :nocommand
 echo "Unknown Command"
 goto :menu
 
-
-REM Help Command
-
+:: Help Command
 :help
-REM List Modules
-
+:: List Modules
 for /R %~dp0modules %%f in (*.cmd) do (
 echo %%~nf
 )
-
-
-
-REM List Stigs
-
+:: List Stigs
 for /R %~dp0stigs %%f in (*.cmd) do (
 echo %%~nf
 )
-
-
-
-REM List API
-
+:: List API
 for /R %~dp0api %%f in (*.cmd) do (
 echo %%~nf
 )
-
+:: Go Back
 goto :menu
