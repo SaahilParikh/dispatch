@@ -54,7 +54,10 @@ goto :load
 
 :load
 :: Show The Modules Scripts Loaded
-echo MODULES LOADED:
+echo.
+echo.
+echo.
+echo =MODULES LOADED=
 cd %~dp0modules
 dir /b /a-d
 echo.
@@ -65,9 +68,11 @@ dir /b /a-d
 echo.
 echo.
 :: Show API Scripts Loaded
-echo API LOADED:
+echo =API LOADED=
 cd %~dp0api
 dir /b /a-d
+echo.
+echo.
 echo.
 
 :: Initial Messages:
@@ -101,6 +106,7 @@ if /I "%INPUT%" EQU "help" goto :help
 :command
 :: For Executing Filename via call
 :: I could have just done with dir then variable, but this is an addon for later incase if I want to implement sub commands
+
 FOR /F "tokens=* USEBACKQ" %%F IN (`@echo %INPUT%.cmd`) DO (
 SET F=%%F
 )
@@ -161,19 +167,19 @@ goto :menu
 :help
 echo.
 echo.
-echo Modules
+echo =Modules=
 :: List Modules
 for /R %~dp0modules %%f in (*.cmd) do (
 echo %%~nf
 )
 echo.
-echo Stigs
+echo =Stigs=
 :: List Stigs
 for /R %~dp0stigs %%f in (*.cmd) do (
 echo %%~nf
 )
 echo.
-echo API
+echo =API=
 :: List API
 for /R %~dp0api %%f in (*.cmd) do (
 echo %%~nf
