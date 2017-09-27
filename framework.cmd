@@ -118,7 +118,7 @@ dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0modules
     call %F%
-      cd :menu
+      goto :menu
 ) ELSE (
   goto :stigs
 )
@@ -129,7 +129,7 @@ dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0\stigs
     call %F%
-      cd :menu
+      goto :menu
 ) ELSE (
   goto :api
 )
@@ -140,7 +140,7 @@ dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
     cd %~dp0api
     call %F%
-      cd :menu
+      goto :menu
 ) ELSE (
   goto :nocommand
 )
