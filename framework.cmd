@@ -61,8 +61,9 @@ echo =MODULES LOADED=
 cd %~dp0modules
 dir /b /a-d
 echo.
+echo.
 :: Show Stigs Scripts Loaded
-echo STIGS LOADED:
+echo =STIGS LOADED=
 cd %~dp0stigs
 dir /b /a-d
 echo.
