@@ -10,10 +10,10 @@
 ===================================================================
 
 ABOUT:
-Win-Sec is made by Erick, part of the Wando Cyber Patriot Team.
+Win-Sec is used to easily harden Windows system.
 This is a small side project that was made due to the fustration of other automated system hardening scripts either not working or really having no idea how to use it.
 
-This is all scripted in batch and powershell to have no compatibility or dependency issues, and the framework easily editable. This is specifically for Windows 10. Windows 7 and Windows 2012 server full compatibility may be added soon or later.
+This is all scripted in batch and powershell to have no compatibility or dependency issues, and the framework easily editable. This is specifically for Windows 10. Windows 7 and Windows 2012 server *should* work as well.
 
 Since this is is a side project I will do the best I can to fix as many bugs time will give me. I'm also not the best coder around so hopefully someone will help... hopefully. And as always do not use this in a production environment lol.
 
@@ -39,4 +39,8 @@ If you have a way to edit the MMC or gpedit via command line or powershell or an
 Working:
 guestacc
 auditpol
+
+DO NOT EXECUTE:
+showfiles - this will scream error messages on all directories of your ocmputer - fixing it
+
 
