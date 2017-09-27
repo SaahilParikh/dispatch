@@ -38,4 +38,5 @@ If you have a way to edit the MMC or gpedit via command line or powershell or an
 
 Working:
 guestacc
+auditpol
 
