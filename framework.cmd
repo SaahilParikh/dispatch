@@ -25,7 +25,8 @@ echo.
 :::		 Wando Cyber Patriot Team             
 ::Just ASCII Art Functiom
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-
+echo.
+echo.
 
 :check
 NET SESSION >nul 2>&1
