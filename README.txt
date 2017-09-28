@@ -1,16 +1,13 @@
- /$$      /$$ /$$                    /$$$$$$                     
-| $$  /$ | $$|__/                   /$$__  $$                    
-| $$ /$$$| $$ /$$ /$$$$$$$         | $$  \__/  /$$$$$$   /$$$$$$$
-| $$/$$ $$ $$| $$| $$__  $$ /$$$$$$|  $$$$$$  /$$__  $$ /$$_____/
-| $$$$_  $$$$| $$| $$  \ $$|______/ \____  $$| $$$$$$$$| $$      
-| $$$/ \  $$$| $$| $$  | $$         /$$  \ $$| $$_____/| $$      
-| $$/   \  $$| $$| $$  | $$        |  $$$$$$/|  $$$$$$$|  $$$$$$$
-|__/     \__/|__/|__/  |__/         \______/  \_______/ \_______/
-
+    ____  _________ ____  ___  ______________  __
+   / __ \/  _/ ___// __ \/   |/_  __/ ____/ / / /
+  / / / // / \__ \/ /_/ / /| | / / / /   / /_/ / 
+ / /_/ // / ___/ / ____/ ___ |/ / / /___/ __  /  
+/_____/___//____/_/   /_/  |_/_/  \____/_/ /_/   
+                                                 
 ===================================================================
 
 ABOUT:
-Win-Sec is used to easily harden Windows system.
+Dispatch is used to easily harden Windows system.
 This is a small side project that was made due to the fustration of other automated system hardening scripts either not working or really having no idea how to use it.
 
 This is all scripted in batch and powershell to have no compatibility or dependency issues, and the framework easily editable. This is specifically for Windows 10. Windows 7 and Windows 2012 server *should* work as well.
