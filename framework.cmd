@@ -5,19 +5,28 @@
 :: ==============================
 :: ==============================
 :: Set Window Size
-mode con: cols=95 lines=78
+mode con: cols=100 lines=50
 :: Set The Title
-title Win-Sec
+title Dispatch
 ::
 echo.
 echo.
-echo Win-Sec
 echo.
-echo.
-echo.
-echo Automatic Windows Framework Hardening Script
-echo By Goerick
-echo Wando Cyber Patriot
+:::		    ____  _________ ____  ___  ______________  __
+:::		   / __ \/  _/ ___// __ \/   |/_  __/ ____/ / / /
+:::		  / / / // / \__ \/ /_/ / /| | / / / /   / /_/ / 
+:::		 / /_/ // / ___/ / ____/ ___ |/ / / /___/ __  /  
+:::		/_____/___//____/_/   /_/  |_/_/  \____/_/ /_/   
+:::                                                
+:::
+:::		 Windows Hardening Script             
+:::		 By Goerick                     
+:::		 github.com/goerick/dispatch            
+:::		 Wando Cyber Patriot Team             
+::Just ASCII Art Functiom
+for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
+
+
 :check
 NET SESSION >nul 2>&1
 IF %ERRORLEVEL% EQU 0 (
