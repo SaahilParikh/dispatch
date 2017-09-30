@@ -14,15 +14,15 @@ echo.
 echo.
 :::		    ____  _________ ____  ___  ______________  __
 :::		   / __ \/  _/ ___// __ \/   |/_  __/ ____/ / / /
-:::		  / / / // / \__ \/ /_/ / /| | / / / /   / /_/ / 
-:::		 / /_/ // / ___/ / ____/ ___ |/ / / /___/ __  /  
-:::		/_____/___//____/_/   /_/  |_/_/  \____/_/ /_/   
-:::                                                
+:::		  / / / // / \__ \/ /_/ / /| | / / / /   / /_/ /
+:::		 / /_/ // / ___/ / ____/ ___ |/ / / /___/ __  /
+:::		/_____/___//____/_/   /_/  |_/_/  \____/_/ /_/
 :::
-:::		 Windows Hardening Script             
-:::		 By Goerick                     
-:::		 github.com/goerick/dispatch            
-:::		 Wando Cyber Patriot Team             
+:::
+:::		 Windows Hardening Script
+:::		 By Goerick
+:::		 github.com/goerick/dispatch
+:::		 Wando Cyber Patriot Team
 ::Just ASCII Art Functiom
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 echo.
@@ -85,6 +85,20 @@ dir /b /a-d
 echo.
 echo.
 echo.
+:: Show Scanner Scripts Loaded
+echo =SCANNER LOADED=
+cd %~dp0scanner
+dir /b /a-d
+echo.
+echo.
+echo.
+:: Show Alpha Scripts Loaded
+echo =ALPHA LOADED=
+cd %~dp0alpha
+dir /b /a-d
+echo.
+echo WARNING USE WITH RISK
+echo.
 
 :: Initial Messages:
 echo Logged In As User %USERNAME%
@@ -121,8 +135,10 @@ if /I "%INPUT%" EQU "help" goto :help
 FOR /F "tokens=* USEBACKQ" %%F IN (`@echo %INPUT%.cmd`) DO (
 SET F=%%F
 )
+goto :modules
 
 :: See If It Exists
+:modules
 cd %~dp0modules
 dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
@@ -137,7 +153,29 @@ If %ERRORLEVEL% EQU 0 (
 cd %~dp0stigs
 dir /s/b %F% > nul 2>&1
 If %ERRORLEVEL% EQU 0 (
-    cd %~dp0\stigs
+    cd %~dp0stigs
+    call %F%
+      goto :menu
+) ELSE (
+  goto :scanner
+)
+
+:scanner
+cd %~dp0scanner
+dir /s/b %F% > nul 2>&1
+If %ERRORLEVEL% EQU 0 (
+    cd %~dp0scanner
+    call %F%
+      goto :menu
+) ELSE (
+  goto :alpha
+)
+
+:alpha
+cd %~dp0alpha
+dir /s/b %F% > nul 2>&1
+If %ERRORLEVEL% EQU 0 (
+    cd %~dp0alpha
     call %F%
       goto :menu
 ) ELSE (
@@ -193,6 +231,18 @@ echo.
 echo =API=
 :: List API
 for /R %~dp0api %%f in (*.cmd) do (
+echo %%~nf
+)
+echo.
+echo =Scanner=
+:: List Scanner
+for /R %~dp0scanner %%f in (*.cmd) do (
+echo %%~nf
+)
+echo.
+echo =Alpha=
+:: List Alpha
+for /R %~dp0alpha %%f in (*.cmd) do (
 echo %%~nf
 )
 echo.
