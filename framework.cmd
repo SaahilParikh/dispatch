@@ -71,26 +71,20 @@ echo =MODULES LOADED=
 cd %~dp0modules
 dir /b /a-d
 echo.
-echo.
 :: Show Stigs Scripts Loaded
 echo =STIGS LOADED=
 cd %~dp0stigs
 dir /b /a-d
-echo.
 echo.
 :: Show API Scripts Loaded
 echo =API LOADED=
 cd %~dp0api
 dir /b /a-d
 echo.
-echo.
-echo.
 :: Show Scanner Scripts Loaded
 echo =SCANNER LOADED=
 cd %~dp0scanner
 dir /b /a-d
-echo.
-echo.
 echo.
 :: Show Alpha Scripts Loaded
 echo =ALPHA LOADED=
