@@ -24,4 +24,5 @@ REM The default autorun behavior must be configured to prevent autorun commands.
 REM Allowing autorun commands to execute may introduce malicious code to a system.
 REM Configuring this setting prevents autorun commands from executing.
 
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\" /v NoAutorun /t REG_DWORD /d 1
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\" /v NoAutoRun /t REG_DWORD /d 1
+reg add "HKCU\SYSTEM\CurrentControlSet\Services\CDROM" /v AutoRun /t REG_DWORD /d 1 /f
