@@ -100,7 +100,7 @@ goto :menu
 cd %~dp0
 :: Set Input
 set "INPUT="
-set /P INPUT=%USERNAME%@Win-Sec:~$
+set /P INPUT=%USERNAME%@Dispatch:~$
 if /I "%INPUT%" EQU "help" goto :help
 
 :: MENU Commands ==================================================
@@ -171,7 +171,7 @@ echo.
 
 :: Class For Unknown Commands
 :nocommand
-echo "Unknown Command"
+echo Unknown Command
 goto :menu
 
 :: Help Command
