@@ -6,8 +6,6 @@ if exist "%ProgramFiles%\Windows Defender\MpCmdRun.exe" (
     :missingdef
 )
 
-
-
 :windef
 echo.
 echo Restoring Windows Defender To Default Settings
