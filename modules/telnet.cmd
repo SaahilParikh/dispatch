@@ -3,5 +3,11 @@ echo.
 echo "Disabling Telnet"
 net stop telnet
 sc config tlntsvr start= disabled
-product where name="telnet" call uninstall
+
+::Experimental
+start /w pkgmgr /uu:TelnetClient
+start /w pkgmgr /uu:TelnetServer
+::
+
+
 sc delete telnet
