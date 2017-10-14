@@ -37,8 +37,8 @@ echo "Setting Max Password Age (30)"
 NET.exe accounts /maxpwage:30
 echo "Setting Force Logoff (60)"
 NET.exe accounts /forcelogoff:60
-echo "Setting Lock Out Threshold (4)"
-NET.exe accounts /lockoutthreshold:4
+echo "Setting Lock Out Threshold (10)"
+NET.exe accounts /lockoutthreshold:10
 echo "Setting Lockout Window (4)"
 NET.exe accounts /lockoutwindow:4
 echo "Setting Lock Out Duration (4)"
