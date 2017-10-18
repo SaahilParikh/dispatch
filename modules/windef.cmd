@@ -1,10 +1,7 @@
 echo.
 
-if exist "%ProgramFiles%\Windows Defender\MpCmdRun.exe" (
-    :windef
-) else (
-    :missingdef
-)
+if exist "%ProgramFiles%\Windows Defender\MpCmdRun.exe" goto :windef || goto :missingdef
+
 
 :windef
 echo.
