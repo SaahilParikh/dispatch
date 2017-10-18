@@ -3,7 +3,7 @@ echo.
 echo Enabling firewall...
 echo.
 echo set currentprofile state on 
-netsh advfirewall set currentprofile state on > NUL
+netsh advfirewall set currentprofile state on 
 echo.
 echo set currentprofile state on 
 netsh advfirewall set privateprofile state on
