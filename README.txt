@@ -6,6 +6,21 @@
                                                  
 ===================================================================
 
+WARNING:
+Dispatch is no longer supported or updated on github
+The latest features, bug fixes, and releases are on:
+    https://gitlab.com/goerick/dispatch
+
+
+
+
+
+
+
+
+
+===================================================================
+
 ABOUT:
 Dispatch is used to easily harden Windows system.
 This is a small side project that was made due to the fustration of other automated system hardening scripts either not working or really having no idea how to use it.
