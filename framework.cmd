@@ -22,7 +22,7 @@ echo.
 :::		 Windows Hardening Script
 :::		 By Goerick
 :::		 github.com/goerick/dispatch
-::Just ASCII Art Functiom
+:: Just ASCII Art Functiom
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 echo.
 echo.
@@ -114,12 +114,14 @@ if /I "%INPUT%" EQU "help" goto :help
 
 :: Check For Invalid Commands, currently this is bugged so going to add once it is fixed
 ::
-::setlocal enableDelayedExpansion
-::echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
-::  goto :command
-::) || (
-::  echo Unknown Command
-:: )
+@setlocal enableDelayedExpansion
+echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
+  goto :command
+     ) || (
+  echo Invalid Command
+  echo Please Use Alphanumeric Values
+  goto :menu
+  )
 
 :command
 :: For Executing Filename via call
