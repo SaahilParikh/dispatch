@@ -34,11 +34,9 @@ If you have a way to edit the MMC or gpedit via command line or powershell or an
 
 ========================================
 
-Working:
-guestacc
-auditpol
+Everything on Modules, api, and Stigs *should* work
+Scanner is broken
+Use alpha with caution
 
-DO NOT EXECUTE:
-showfiles - this will scream error messages on all directories of your ocmputer - fixing it
 
 
