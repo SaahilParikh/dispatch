@@ -118,9 +118,9 @@ if /I "%INPUT%" EQU "help" goto :help
 echo(!INPUT!|findstr /rx "D[0123456789]*" >nul && (
   goto :command
      ) || (
-  echo Invalid Command
-  echo Please Use Alphanumeric Values
-  goto :menu
+REM Test
+REM Currently This is Broken 
+  goto :command
   )
 
 :command
